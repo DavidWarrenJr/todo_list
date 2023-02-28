@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(to right, #C33764 , #1D2671);
+}
+
+.card-column {
+    background-color: #DFDFDF;
+    max-width: 95%;
+    padding: 0.5rem;
+    border-radius: 12px;
+    margin: 1rem auto;
+}
+
+
+.card-column-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.dot {
+    height: 5px;
+    width: 5px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.card {
+    background-color: white;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}

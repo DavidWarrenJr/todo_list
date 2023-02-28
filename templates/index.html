@@ -5,9 +5,22 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
         <title>Todo List</title>
     </head>
     <body>
-        <h1>INDEX</h1>
+        <section class="card-column">
+            <div class="card-column-header">
+                <h2>To Do</h2>
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>  <!-- /.card-column-header -->
+            {% include "card.html" %}
+        </section>
+
+
     </body>
 </html>
