@@ -12,15 +12,23 @@
         <section class="card-column">
             <div class="card-column-header">
                 <h2>To Do</h2>
-                <div class="dots">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+                <div class="dropdown">
+                    <div class="dots dropbtn" onclick="toggleDropDown()">
+<!--                    TODO bug where clicking dot does not open dropdown   -->
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <!-- /.dots -->
+                    <div id="todo_dropdown" class="todo_dropdown-content">
+                        <div class="dropdown-item">Add</div>
+                    </div>
                 </div>
+            </div>
+            <!-- /.dropdown -->
             </div>  <!-- /.card-column-header -->
             {% include "card.html" %}
         </section>
-
-
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
 </html>
