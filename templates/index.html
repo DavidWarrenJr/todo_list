@@ -14,20 +14,30 @@
                 <h2>To Do</h2>
                 <div class="dropdown">
                     <div class="dots dropbtn" onclick="toggleDropDown()">
-<!--                    TODO bug where clicking dot does not open dropdown   -->
+                        <!--                    TODO bug where clicking dot does not open dropdown   -->
                         <div class="dot"></div>
                         <div class="dot"></div>
                         <div class="dot"></div>
                     </div>
                     <!-- /.dots -->
                     <div id="todo_dropdown" class="todo_dropdown-content">
-                        <div class="dropdown-item">Add</div>
+                        <a href="{{ url_for('add') }}" class="dropdown-item">Add</a>
                     </div>
                 </div>
             </div>
             <!-- /.dropdown -->
             </div>  <!-- /.card-column-header -->
-            {% include "card.html" %}
+            {% for task in all_task: %}
+            <section class="card">
+                <h2>{{ task.title }}</h2>
+                <h3>{{ task.description }}</h3>
+                <div class="info">
+                    {% if task.due_month and task.due_day %}
+                    <p>{{ task.due_month }} {{ task.due_day }}</p>
+                    {% endif %}
+                </div>
+            </section>
+            {% endfor %}
         </section>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>

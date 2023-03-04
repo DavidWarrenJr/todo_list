@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    background-image: linear-gradient(to right, #005AA7 , #FFFDE4);
+}
+
+input {
+    display: none;
+    margin-top: 0.25rem;
+}
+
+.h-center {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+    background-color: lightgray;
+    border-radius: 12px;
+    padding: 1rem;
+    width: 80%;
+    margin-top: 4rem;
+}
+
+.card form > *:not(:first-child) {
+    margin-top: 1rem;
+}
+
+.buttons {
+    margin-top: 1rem;
+}
+
+.buttons > *:first-child {
+    margin-right: 0.5rem;
+}
+
+.btn {
+    padding: 0.25rem 1.5rem;
+    min-width: 95px;
+}
+
+.show {
+    display: block;
+}
+
+

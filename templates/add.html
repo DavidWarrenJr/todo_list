@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/add.css') }}">
+        <title>Add Task</title>
+    </head>
+    <body>
+        <section class="card">
+            <form action="{{ url_for('add') }}" method="post">
+                <div class="image">
+                    <label for="image-input" id="image-label">+ Image</label>
+                    <input name="image-input" type="text" class="image-input" id="image-input">
+                </div>
+
+                <div class="title">
+                    <label id="title-label" for="title-input">+ Title</label>
+                    <input name="title-input" type="text" class="title-input" id="title-input">
+                    <!-- /.title-input -->
+                </div>
+                <!-- /.title -->
+
+                <div class="description">
+                    <label for="description-input" id="description-label">+ Description</label>
+                    <input name="description-input" type="text" class="description-input" id="description-input">
+                    <!-- /.description-input -->
+                </div>
+                <!-- /.description -->
+
+                <div class="date">
+                    <label for="date-input" id="due_date_label">+ Due Date</label>
+                    <input type="date" name="date-input" id="due_date_input">
+                </div>
+                <!-- /.due-date -->
+
+                <div class="h-center buttons">
+                    <button class="btn" type="submit">Add</button>
+                    <button class="btn" id="cancel-btn" value="False">Cancel</button>
+                    <!-- /.cancel-btn -->
+                </div>
+                <!-- /.center -->
+            </form>
+        </section>
+        <!-- /.card -->
+
+        <script src="{{ url_for('static', filename='js/add_script.js') }}"></script>
+    </body>
+</html>
