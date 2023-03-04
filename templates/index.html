@@ -29,7 +29,10 @@
             </div>  <!-- /.card-column-header -->
             {% for task in all_task: %}
             <section class="card">
-                <h2>{{ task.title }}</h2>
+                <div class="card-title-row">
+                    <h2>{{ task.title }}</h2>
+                    <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
+                </div>
                 <h3>{{ task.description }}</h3>
                 <div class="info">
                     {% if task.due_month and task.due_day %}
