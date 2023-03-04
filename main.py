@@ -96,5 +96,16 @@ def add():
     return render_template("add.html")
 
 
+@app.route("/delete/<int:task_id>", methods=["GET", "POST"])
+def delete(task_id):
+    tasks = db.session.query(Todo).all()
+    for task in tasks:
+        if task.id == task_id:
+            db.session.delete(task)
+            db.session.commit()
+
+    return redirect(url_for('home'))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
