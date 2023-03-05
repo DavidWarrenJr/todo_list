@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import text
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///todo.db"
@@ -123,11 +124,25 @@ def add():
 
 @app.route("/delete/<int:task_id>", methods=["GET", "POST"])
 def delete(task_id):
-    tasks = db.session.query(Todo).all()
-    for task in tasks:
-        if task.id == task_id:
-            db.session.delete(task)
-            db.session.commit()
+    col_type = request.args.get("column_type")
+    if col_type == "Todo":
+        tasks = db.session.query(Todo).all()
+        for task in tasks:
+            if task.id == task_id:
+                db.session.delete(task)
+                db.session.commit()
+    elif col_type == "Doing":
+        tasks = db.session.query(Doing).all()
+        for task in tasks:
+            if task.id == task_id:
+                db.session.delete(task)
+                db.session.commit()
+    elif col_type == "Done":
+        tasks = db.session.query(Done).all()
+        for task in tasks:
+            if task.id == task_id:
+                db.session.delete(task)
+                db.session.commit()
 
     return redirect(url_for('home'))
 

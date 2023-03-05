@@ -67,7 +67,7 @@
                 <section class="card draggable" draggable="true">
                 <div class="card-title-row">
                     <h2>{{ task.title }}</h2>
-                    <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
+                    <a href="{{ url_for('delete', task_id=task.id, column_type="Doing") }}" class="delete">❌</a>
                 </div>
                 {% if task.description: %}
                 <h3>{{ task.description }}</h3>
