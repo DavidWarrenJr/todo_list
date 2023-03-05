@@ -33,7 +33,9 @@
                     <h2>{{ task.title }}</h2>
                     <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
                 </div>
+                {% if task.description: %}
                 <h3>{{ task.description }}</h3>
+                {% endif %}
                 <div class="info">
                     {% if task.due_month and task.due_day %}
                     <p>🕑 {{ task.due_month }} {{ task.due_day }}</p>
@@ -61,13 +63,51 @@
             </div>
             <!-- /.dropdown -->
             </div>  <!-- /.card-column-header -->
-            {% for task in doing_tasks: %}
+            {% for task in doing_task: %}
             <section class="card">
                 <div class="card-title-row">
                     <h2>{{ task.title }}</h2>
                     <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
                 </div>
+                {% if task.description: %}
                 <h3>{{ task.description }}</h3>
+                {% endif %}
+                <div class="info">
+                    {% if task.due_month and task.due_day %}
+                    <p>🕑 {{ task.due_month }} {{ task.due_day }}</p>
+                    {% endif %}
+                </div>
+            </section>
+            {% endfor %}
+        </section>
+
+        <section class="card-column">
+            <div class="card-column-header">
+                <h2>Doing</h2>
+                <div class="dropdown">
+                    <div class="dots done-dropbtn" onclick="toggleDoneDropDown()">
+                        <!--                    TODO bug where clicking dot does not open dropdown   -->
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <!-- /.dots -->
+                    <div id="done-dropdown" class="done-dropdown-content">
+                        <a href="{{ url_for('add') }}" class="dropdown-item">Add</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.dropdown -->
+            </div>  <!-- /.card-column-header -->
+            {% for task in done_task: %}
+            <section class="card">
+                <div class="card-title-row">
+                    <h2>{{ task.title }}</h2>
+                    <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
+                </div>
+                {% if task.description: %}
+                <h3>{{ task.description }}</h3>
+                {% endif %}
                 <div class="info">
                     {% if task.due_month and task.due_day %}
                     <p>🕑 {{ task.due_month }} {{ task.due_day }}</p>

@@ -8,6 +8,10 @@ const toggleDoingDropDown = () => {
   document.getElementById("doing-dropdown").classList.toggle("show");
 }
 
+const toggleDoneDropDown = () => {
+    document.getElementById("done-dropdown").classList.toggle("show");
+}
+
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.todo-dropbtn')) {
@@ -22,6 +26,16 @@ window.onclick = function(event) {
   }
   if (!event.target.matches('.doing-dropbtn')) {
     var dropdowns = document.getElementsByClassName("doing-dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+  if (!event.target.matches('.done-dropbtn')) {
+    var dropdowns = document.getElementsByClassName("done-dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];

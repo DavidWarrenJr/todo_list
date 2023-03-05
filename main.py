@@ -16,6 +16,26 @@ class Todo(db.Model):
     due_day = db.Column(db.Integer)
 
 
+class Doing(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String)
+    title = db.Column(db.String(250))
+    description = db.Column(db.String)
+    due_year = db.Column(db.Integer)
+    due_month = db.Column(db.String)
+    due_day = db.Column(db.Integer)
+
+
+class Done(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String)
+    title = db.Column(db.String(250))
+    description = db.Column(db.String)
+    due_year = db.Column(db.Integer)
+    due_month = db.Column(db.String)
+    due_day = db.Column(db.Integer)
+
+
 with app.app_context():
     db.create_all()
 
@@ -23,9 +43,13 @@ with app.app_context():
 @app.route("/")
 def home():
     todo_tasks = db.session.query(Todo).all()
-    doing_tasks = []
+    doing_tasks = db.session.query(Doing).all()
+    done_tasks = db.session.query(Done).all()
 
-    return render_template("index.html", all_task=todo_tasks, doing_task=doing_tasks)
+    return render_template("index.html",
+                           all_task=todo_tasks,
+                           doing_task=doing_tasks,
+                           done_task=done_tasks)
 
 
 def get_due_month_string(month: str) -> str:
@@ -65,7 +89,6 @@ def get_due_day(day: str) -> str:
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
-        print(request.form.get("cancel-btn"))
         if request.form.get("cancel-btn") == "True":
             return redirect(url_for("home"))
 
