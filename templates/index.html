@@ -9,7 +9,7 @@
         <title>Todo List</title>
     </head>
     <body>
-        <section class="card-column">
+        <section class="card-column container">
             <div class="card-column-header">
                 <h2>To Do</h2>
                 <div class="dropdown">
@@ -28,7 +28,7 @@
             <!-- /.dropdown -->
             </div>  <!-- /.card-column-header -->
             {% for task in all_task: %}
-            <section class="card">
+                <section class="card draggable" draggable="true">
                 <div class="card-title-row">
                     <h2>{{ task.title }}</h2>
                     <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
@@ -45,7 +45,7 @@
             {% endfor %}
         </section>
 
-        <section class="card-column">
+        <section class="card-column container">
             <div class="card-column-header">
                 <h2>Doing</h2>
                 <div class="dropdown">
@@ -64,7 +64,7 @@
             <!-- /.dropdown -->
             </div>  <!-- /.card-column-header -->
             {% for task in doing_task: %}
-            <section class="card">
+                <section class="card draggable" draggable="true">
                 <div class="card-title-row">
                     <h2>{{ task.title }}</h2>
                     <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
@@ -81,9 +81,9 @@
             {% endfor %}
         </section>
 
-        <section class="card-column">
+        <section class="card-column container">
             <div class="card-column-header">
-                <h2>Doing</h2>
+                <h2>Done</h2>
                 <div class="dropdown">
                     <div class="dots done-dropbtn" onclick="toggleDoneDropDown()">
                         <!--                    TODO bug where clicking dot does not open dropdown   -->
@@ -100,23 +100,24 @@
             <!-- /.dropdown -->
             </div>  <!-- /.card-column-header -->
             {% for task in done_task: %}
-            <section class="card">
-                <div class="card-title-row">
-                    <h2>{{ task.title }}</h2>
-                    <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
-                </div>
-                {% if task.description: %}
-                <h3>{{ task.description }}</h3>
-                {% endif %}
-                <div class="info">
-                    {% if task.due_month and task.due_day %}
-                    <p>🕑 {{ task.due_month }} {{ task.due_day }}</p>
+                <section class="card draggable" draggable="true">
+                    <div class="card-title-row">
+                        <h2>{{ task.title }}</h2>
+                        <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
+                    </div>
+                    {% if task.description: %}
+                    <h3>{{ task.description }}</h3>
                     {% endif %}
-                </div>
-            </section>
+                    <div class="info">
+                        {% if task.due_month and task.due_day %}
+                        <p>🕑 {{ task.due_month }} {{ task.due_day }}</p>
+                        {% endif %}
+                    </div>
+                </section>
             {% endfor %}
         </section>
 
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/drag_and_drop.js') }}"></script>
     </body>
 </html>
