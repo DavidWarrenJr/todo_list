@@ -22,8 +22,10 @@ with app.app_context():
 
 @app.route("/")
 def home():
-    all_task = db.session.query(Todo).all()
-    return render_template("index.html", all_task=all_task)
+    todo_tasks = db.session.query(Todo).all()
+    doing_tasks = []
+
+    return render_template("index.html", all_task=todo_tasks, doing_task=doing_tasks)
 
 
 def get_due_month_string(month: str) -> str:
