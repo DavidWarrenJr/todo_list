@@ -9,7 +9,7 @@
         <title>Todo List</title>
     </head>
     <body>
-        <section class="card-column container">
+        <section class="card-column container todo">
             <div class="card-column-header">
                 <h2>To Do</h2>
                 <div class="dropdown">
@@ -31,7 +31,7 @@
                 <section class="card draggable" draggable="true">
                 <div class="card-title-row">
                     <h2>{{ task.title }}</h2>
-                    <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
+                    <a href="{{ url_for('delete', task_id=task.id, column_type="Todo") }}" class="delete">❌</a>
                 </div>
                 {% if task.description: %}
                 <h3>{{ task.description }}</h3>
@@ -45,7 +45,7 @@
             {% endfor %}
         </section>
 
-        <section class="card-column container">
+        <section class="card-column container doing">
             <div class="card-column-header">
                 <h2>Doing</h2>
                 <div class="dropdown">
@@ -81,7 +81,7 @@
             {% endfor %}
         </section>
 
-        <section class="card-column container">
+        <section class="card-column container done">
             <div class="card-column-header">
                 <h2>Done</h2>
                 <div class="dropdown">
@@ -103,7 +103,7 @@
                 <section class="card draggable" draggable="true">
                     <div class="card-title-row">
                         <h2>{{ task.title }}</h2>
-                        <a href="{{ url_for('delete', task_id=task.id) }}" class="delete">❌</a>
+                        <a href="{{ url_for('delete', task_id=task.id, column_type="Done") }}" class="delete">❌</a>
                     </div>
                     {% if task.description: %}
                     <h3>{{ task.description }}</h3>

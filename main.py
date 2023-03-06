@@ -147,5 +147,87 @@ def delete(task_id):
     return redirect(url_for('home'))
 
 
+def remove_prev_entry(end_container, start_container, title):
+    if end_container == start_container:
+        return
+
+    task = None
+    if start_container == "Todo":
+        task = db.session.query(Todo).filter_by(title=title).first()
+    elif start_container == "Doing":
+        task = db.session.query(Doing).filter_by(title=title).first()
+    elif start_container == "Done":
+        task = db.session.query(Done).filter_by(title=title).first()
+
+    if task:
+        db.session.delete(task)
+        db.session.commit()
+
+
+@app.route("/update", methods=["POST"])
+def update():
+    if request.method == 'POST':
+        data = request.get_json()
+
+        title = data["title"]
+        description = data["description"]
+        due_date = data["due_date"]
+        end_container = data["end_container"].title()
+        start_container = data["start_container"].title()
+
+        remove_prev_entry(end_container, start_container, title)
+
+        if end_container == "Todo":
+            if not db.session.query(Todo).filter_by(title=title).first():
+                if due_date != "None":
+                    month = due_date.split()[1]
+                    day = due_date.split()[2]
+
+                    task = Todo(title=title,
+                                description=description,
+                                due_month=month,
+                                due_day=day)
+                else:
+                    task = Todo(title=title,
+                                description=description)
+
+                db.session.add(task)
+                db.session.commit()
+        elif end_container == "Doing":
+            if not db.session.query(Doing).filter_by(title=title).first():
+                if due_date != "None":
+                    month = due_date.split()[1]
+                    day = due_date.split()[2]
+
+                    task = Doing(title=title,
+                                 description=description,
+                                 due_month=month,
+                                 due_day=day)
+                else:
+                    task = Doing(title=title,
+                                 description=description)
+
+                db.session.add(task)
+                db.session.commit()
+        elif end_container == "Done":
+            if not db.session.query(Done).filter_by(title=title).first():
+                if due_date != "None":
+                    month = due_date.split()[1]
+                    day = due_date.split()[2]
+
+                    task = Done(title=title,
+                                description=description,
+                                due_month=month,
+                                due_day=day)
+                else:
+                    task = Done(title=title,
+                                description=description)
+
+                db.session.add(task)
+                db.session.commit()
+
+        return 'Sucesss', 200
+
+
 if __name__ == "__main__":
     app.run(debug=True)
