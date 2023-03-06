@@ -48,18 +48,6 @@
         <section class="card-column container doing">
             <div class="card-column-header">
                 <h2>Doing</h2>
-                <div class="dropdown">
-                    <div class="dots doing-dropbtn" onclick="toggleDoingDropDown()">
-                        <!--                    TODO bug where clicking dot does not open dropdown   -->
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <!-- /.dots -->
-                    <div id="doing-dropdown" class="doing-dropdown-content">
-                        <a href="{{ url_for('add') }}" class="dropdown-item">Add</a>
-                    </div>
-                </div>
             </div>
             <!-- /.dropdown -->
             </div>  <!-- /.card-column-header -->
@@ -84,20 +72,7 @@
         <section class="card-column container done">
             <div class="card-column-header">
                 <h2>Done</h2>
-                <div class="dropdown">
-                    <div class="dots done-dropbtn" onclick="toggleDoneDropDown()">
-                        <!--                    TODO bug where clicking dot does not open dropdown   -->
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <!-- /.dots -->
-                    <div id="done-dropdown" class="done-dropdown-content">
-                        <a href="{{ url_for('add') }}" class="dropdown-item">Add</a>
-                    </div>
-                </div>
             </div>
-            <!-- /.dropdown -->
             </div>  <!-- /.card-column-header -->
             {% for task in done_task: %}
                 <section class="card draggable" draggable="true">
