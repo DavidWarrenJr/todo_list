@@ -86,7 +86,8 @@ def get_due_day(day: str) -> str:
 def add():
     if request.method == "POST":
         # cancel button is clicked do nothing
-        if request.form.get("cancel-btn") == "True":
+        cancel_button_is_clicked = request.form['cancel-btn']
+        if cancel_button_is_clicked == "True":
             return redirect(url_for("home"))
 
         title = request.form.get("title-input")

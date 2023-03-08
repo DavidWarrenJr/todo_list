@@ -10,12 +10,13 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 50vh;
-    background-image: linear-gradient(to right, #005AA7 , #FFFDE4);
+    background-image: linear-gradient(to right, #C33764 , #1D2671);
 }
 
 input {
     display: none;
     margin-top: 0.25rem;
+    outline: none;
 }
 
 .h-center {
@@ -24,11 +25,15 @@ input {
 }
 
 .card {
-    background-color: lightgray;
+    background-color: #EFEFEF;
     border-radius: 12px;
     padding: 1rem;
-    width: 80%;
+    max-width: 28rem;
+    width: 100%;
     margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card form > *:not(:first-child) {
