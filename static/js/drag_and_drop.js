@@ -1,3 +1,6 @@
+// The drag and drop functionality was created by Web Dev Simplified and slightly modified to work with my project
+// https://www.youtube.com/watch?v=jfYWwQrtzzY
+
 const draggables = document.querySelectorAll('.draggable')
 const containers = document.querySelectorAll('.container')
 
@@ -39,32 +42,27 @@ const update_db = async (data, end_container, start_container) => {
         },
         body: JSON.stringify(json_data),
     })
+}
 
+const getContainer = (event) => {
+    for(i=0; i < event.target.parentElement.classList.length; ++i) {
+        if (event.target.parentElement.classList[i] == "todo" ||
+            event.target.parentElement.classList[i] == "doing" ||
+            event.target.parentElement.classList[i] == "done")
+            return event.target.parentElement.classList[i]
+    }
 }
 
 draggables.forEach(draggable => {
   draggable.addEventListener('dragstart', (event) => {
     draggable.classList.add('dragging');
-    for(i=0; i < event.target.parentElement.classList.length; ++i) {
-        if (event.target.parentElement.classList[i] == "todo" ||
-            event.target.parentElement.classList[i] == "doing" ||
-            event.target.parentElement.classList[i] == "done"){
-            start_container = event.target.parentElement.classList[i]
-            }
-        }
+    start_container = getContainer(event);
   })
 
   draggable.addEventListener('dragend', (event) => {
     draggable.classList.remove('dragging');
     let data = event.target;
-    let container;
-    for(i=0; i < event.target.parentElement.classList.length; ++i) {
-        if (event.target.parentElement.classList[i] == "todo" ||
-            event.target.parentElement.classList[i] == "doing" ||
-            event.target.parentElement.classList[i] == "done"){
-            end_container = event.target.parentElement.classList[i]
-            }
-    }
+    end_container = getContainer(event);
     update_db(data, end_container, start_container);
   })
 })

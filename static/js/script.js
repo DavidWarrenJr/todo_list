@@ -12,6 +12,8 @@ const toggleDoneDropDown = () => {
     document.getElementById("done-dropdown").classList.toggle("show");
 }
 
+// code below was create by Web Dev Simplified and slightly modified to work with my project
+// https://www.youtube.com/watch?v=jfYWwQrtzzY
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.todo-dropbtn')) {
