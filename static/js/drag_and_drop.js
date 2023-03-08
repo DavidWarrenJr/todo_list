@@ -42,8 +42,6 @@ const update_db = async (data, end_container, start_container) => {
 
 }
 
-
-
 draggables.forEach(draggable => {
   draggable.addEventListener('dragstart', (event) => {
     draggable.classList.add('dragging');

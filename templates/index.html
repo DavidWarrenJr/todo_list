@@ -12,7 +12,7 @@
         <div class="body-container">
             <section class="card-column container todo" id="todo">
                 <div class="card-column-header">
-                    <h2>To Do</h2>
+                    <h2 class="column-title">To Do</h2>
                     <div class="dropdown">
                         <div class="dots todo-dropbtn" onclick="toggleTodoDropDown()">
                             <!--                    TODO bug where clicking dot does not open dropdown   -->
@@ -28,14 +28,14 @@
                 </div>
                 <!-- /.dropdown -->
 
-                {% for task in all_task: %}
+                {% for task in todo_task: %}
                 <section class="card draggable" draggable="true">
                     <div class="card-title-row">
-                        <h2>{{ task.title }}</h2>
-                        <a href="{{ url_for('delete', task_id=task.id, column_type=" Todo") }}" class="delete">❌</a>
+                        <h2 class="card-title">{{ task.title }}</h2>
+                        <a href="{{ url_for('delete', task_to_delete_id=task.id, column_type='Todo') }}" class="delete">❌</a>
                     </div>
                     {% if task.description: %}
-                    <h3>{{ task.description }}</h3>
+                    <h3 class="description">{{ task.description }}</h3>
                     {% endif %}
                     <div class="info">
                         {% if task.due_month and task.due_day %}
@@ -48,18 +48,18 @@
 
             <section class="card-column container doing" id="doing">
                 <div class="card-column-header">
-                    <h2>Doing</h2>
+                    <h2 class="column-title">Doing</h2>
                 </div>
                 <!-- /.dropdown -->
 
                 {% for task in doing_task: %}
                 <section class="card draggable" draggable="true">
                     <div class="card-title-row">
-                        <h2>{{ task.title }}</h2>
-                        <a href="{{ url_for('delete', task_id=task.id, column_type=" Doing") }}" class="delete">❌</a>
+                        <h2 class="card-title">{{ task.title }}</h2>
+                        <a href="{{ url_for('delete', task_to_delete_id=task.id, column_type='Doing') }}" class="delete">❌</a>
                     </div>
                     {% if task.description: %}
-                    <h3>{{ task.description }}</h3>
+                    <h3 class="description">{{ task.description }}</h3>
                     {% endif %}
                     <div class="info">
                         {% if task.due_month and task.due_day %}
@@ -72,16 +72,16 @@
 
             <section class="card-column container done" id="done">
                 <div class="card-column-header">
-                    <h2>Done</h2>
+                    <h2 class="column-title">Done</h2>
                 </div>
                 {% for task in done_task: %}
                 <section class="card draggable" draggable="true">
                     <div class="card-title-row">
-                        <h2>{{ task.title }}</h2>
-                        <a href="{{ url_for('delete', task_id=task.id, column_type=" Done") }}" class="delete">❌</a>
+                        <h2 class="card-title">{{ task.title }}</h2>
+                        <a href="{{ url_for('delete', task_to_delete_id=task.id, column_type='Done') }}" class="delete">❌</a>
                     </div>
                     {% if task.description: %}
-                    <h3>{{ task.description }}</h3>
+                    <h3 class="description">{{ task.description }}</h3>
                     {% endif %}
                     <div class="info">
                         {% if task.due_month and task.due_day %}

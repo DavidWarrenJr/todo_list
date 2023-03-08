@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +9,11 @@
 
 body {
     background-image: linear-gradient(to right, #C33764 , #1D2671);
+    font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+
 }
 
 .body-container {
@@ -14,7 +21,7 @@ body {
 }
 
 .card-column {
-    background-color: #DFDFDF;
+    background-color: #EFEFEF;
     max-width: 28rem;
     min-height: 5rem;
     padding: 0.5rem;
