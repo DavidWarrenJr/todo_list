@@ -1,6 +1,6 @@
 const title_label = document.getElementById("title-label");
 const description_label = document.getElementById("description-label");
-const due_date_label = document.getElementById("due_date_label");
+const due_date_label = document.getElementById("due-date-label");
 const cancel_btn = document.getElementById("cancel-btn");
 
 const show_title_input = () => {
@@ -14,7 +14,7 @@ const show_description_input = () => {
 }
 
 const show_due_date_input = () => {
-    const due_date_input = document.getElementById("due_date_input");
+    const due_date_input = document.getElementById("due-date-input");
     due_date_input.classList.toggle("show");
 }
 
