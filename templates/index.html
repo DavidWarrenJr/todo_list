@@ -35,7 +35,7 @@
                         <a href="{{ url_for('delete', task_to_delete_id=task.id, column_type='Todo') }}" class="delete">❌</a>
                     </div>
                     {% if task.description: %}
-                    <h3 class="description">{{ task.description }}</h3>
+                    <p class="description">{{ task.description }}</p>
                     {% endif %}
                     <div class="info">
                         {% if task.due_month and task.due_day %}
@@ -59,7 +59,7 @@
                         <a href="{{ url_for('delete', task_to_delete_id=task.id, column_type='Doing') }}" class="delete">❌</a>
                     </div>
                     {% if task.description: %}
-                    <h3 class="description">{{ task.description }}</h3>
+                    <p class="description">{{ task.description }}</p>
                     {% endif %}
                     <div class="info">
                         {% if task.due_month and task.due_day %}
@@ -81,7 +81,7 @@
                         <a href="{{ url_for('delete', task_to_delete_id=task.id, column_type='Done') }}" class="delete">❌</a>
                     </div>
                     {% if task.description: %}
-                    <h3 class="description">{{ task.description }}</h3>
+                    <p class="description">{{ task.description }}</p>
                     {% endif %}
                     <div class="info">
                         {% if task.due_month and task.due_day %}
